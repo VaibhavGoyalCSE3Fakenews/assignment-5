@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+nav { margin-bottom: 20px; }
+nav a { margin-right: 10px; text-decoration: none; }
+article { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+h1, h2 { color: #333; }
+form { background: #f9f9f9; padding: 20px; border-radius: 5px; }
+input, textarea { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }

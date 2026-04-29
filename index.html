@@ -1,0 +1,45 @@
+[16:00, 29/04/2026] 𝒱𝒶𝒾𝒷𝒽𝒶𝓋 𝒢ℴ𝓎𝒶𝓁: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SimpleBlog{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a> |
+        <a href="{{ url_for('create') }}">Create Post</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
+[16:00, 29/04/2026] 𝒱𝒶𝒾𝒷𝒽𝒶𝓋 𝒢ℴ𝓎𝒶𝓁: {% extends "base.html" %}
+{% block title %}Home - SimpleBlog{% endblock %}
+{% block content %}
+    <h1>Blog Posts</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <article>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <a href="{{ url_for('edit', post_id=post.id) }}">Edit</a> |
+                <a href="{{ url_for('delete', post_id=post.id) }}" onclick="return confirm('Delete?')">Delete</a>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet. <a href="{{ url_for('create') }}">Create one!</a></p>
+    {% endif %}
+{% endblock %}
+[16:00, 29/04/2026] 𝒱𝒶𝒾𝒷𝒽𝒶𝓋 𝒢ℴ𝓎𝒶𝓁: {% extends "base.html" %}
+{% block title %}Create Post{% endblock %}
+{% block content %}
+    <h1>Create New Post</h1>
+    <form method="POST">
+        <label>Title: <input type="text" name="title" required></label><br>
+        <label>Content: <textarea name="content" required></textarea></label><br>
+        <button type="submit">Create</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
